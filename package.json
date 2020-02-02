@@ -1,0 +1,14 @@
+{
+  "name": "kodilla_express_rest_api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/TheWizard0f0z/Express_REST_API.git",
+  "author": "Marcin Dzieszkowski <m.dzieszkowski@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "4.17.1"
+  }
+}
