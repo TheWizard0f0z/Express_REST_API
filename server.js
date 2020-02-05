@@ -23,6 +23,12 @@ app.get('/testimonials', (req, res) => {
   res.json(db);
 });
 
+//returns a random element from an array
+app.get('/testimonials/random', (req, res) => {
+  const randomRecord = db[Math.floor(Math.random() * db.length)];
+  res.json(randomRecord);
+});
+
 //returns only one element of the array, matching: id
 app.get('/testimonials/:id', (req, res) => {
   const id = req.params.id;
@@ -32,12 +38,6 @@ app.get('/testimonials/:id', (req, res) => {
       res.json(record);
     }
   }
-});
-
-//returns a random element from an array
-app.get('/testimonials/random', (req, res) => {
-  const randomRecord = db[Math.floor(Math.random() * db.length)];
-  res.json(randomRecord);
 });
 
 //add a new element to the array
