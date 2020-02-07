@@ -28,17 +28,27 @@ router.route('/seats/:id').get((req, res) => {
 //add a new element to the array
 router.route('/seats').post((req, res) => {
   const { day, seat, client, email } = req.body;
+  const availability = true;
 
-  const newRecord = {
-    id: uuidv4(),
-    day: day,
-    seat: seat,
-    client: client,
-    email: email
-  };
-  db.seats.push(newRecord);
+  for (let record of db.seats) {
+    if (record.day === day && record.seat === seat) {
+      res.status(405).json({ message: 'The slot is already taken...' });
+      availability = false;
+    }
+  }
 
-  return res.json({ message: 'OK' });
+  if (availability === true) {
+    const newRecord = {
+      id: uuidv4(),
+      day: day,
+      seat: seat,
+      client: client,
+      email: email
+    };
+    db.seats.push(newRecord);
+
+    return res.json({ message: 'OK' });
+  }
 });
 
 //edit array element
