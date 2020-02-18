@@ -54,9 +54,16 @@ class SeatChooser extends React.Component {
       );
   };
 
+  takenSeats = seats => {
+    const seatsTaken = seats.filter(i => this.isTaken(i.seat));
+    return seatsTaken.length;
+  };
+
   render() {
-    const { prepareSeat } = this;
-    const { requests } = this.props;
+    const { prepareSeat, takenSeats } = this;
+    const { requests, seats } = this.props;
+    const allSeats = 50;
+    let freeSeats = allSeats - takenSeats(seats);
 
     return (
       <div>
@@ -69,7 +76,7 @@ class SeatChooser extends React.Component {
         </small>
         {requests['LOAD_SEATS'] && requests['LOAD_SEATS'].success && (
           <div className='seats'>
-            {[...Array(50)].map((x, i) => prepareSeat(i + 1))}
+            {[...Array(allSeats)].map((x, i) => prepareSeat(i + 1))}
           </div>
         )}
         {requests['LOAD_SEATS'] && requests['LOAD_SEATS'].pending && (
@@ -78,6 +85,9 @@ class SeatChooser extends React.Component {
         {requests['LOAD_SEATS'] && requests['LOAD_SEATS'].error && (
           <Alert color='warning'>Couldn't load seats...</Alert>
         )}
+        <p>
+          Free seats: {freeSeats}/{allSeats}
+        </p>
       </div>
     );
   }
