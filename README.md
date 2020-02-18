@@ -1,6 +1,6 @@
 # New Wave Festival
 
-[Click me!](https://infinite-peak-15835.herokuapp.com/)
+[Click me!](https://afternoon-sea-65074.herokuapp.com/)
 
 ## General info
 
@@ -15,3 +15,4 @@ Project is created with:
 - React
 - Node.js (Express)
 - REST/API
+- Websocket
