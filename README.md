@@ -16,3 +16,4 @@ Project is created with:
 - Node.js (Express)
 - REST/API
 - Websocket
+- MongoDB (Mongoose)
