@@ -8,6 +8,6 @@ router.get('/testimonials/random', TestimonialController.getRandom);
 router.get('/testimonials/:id', TestimonialController.getOneById);
 router.post('/testimonials', TestimonialController.postOne);
 router.put('/testimonials/:id', TestimonialController.updateOneById);
-router.delete('/concert/:id', TestimonialController.deleteOneById);
+router.delete('/testimonials/:id', TestimonialController.deleteOneById);
 
 module.exports = router;

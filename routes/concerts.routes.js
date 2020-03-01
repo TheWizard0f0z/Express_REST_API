@@ -8,6 +8,6 @@ router.get('/concerts/random', ConcertController.getRandom);
 router.get('/concerts/:id', ConcertController.getOneById);
 router.post('/concerts', ConcertController.postOne);
 router.put('/concerts/:id', ConcertController.updateOneById);
-router.delete('/concert/:id', ConcertController.deleteOneById);
+router.delete('/concerts/:id', ConcertController.deleteOneById);
 
 module.exports = router;
