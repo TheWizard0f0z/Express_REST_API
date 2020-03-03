@@ -5,6 +5,7 @@ exports.getAll = async (req, res) => {
     res.json(await Testimonial.find());
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 };
 
@@ -14,9 +15,10 @@ exports.getRandom = async (req, res) => {
     const rand = Math.floor(Math.random() * count);
     const tes = await Testimonial.findOne().skip(rand);
     if (!tes) res.status(404).json({ message: 'Not found' });
-    else res.json(con);
+    else res.json(tes);
   } catch (err) {
-    res.json(err);
+    res.status(500).json(err);
+    console.log(err);
   }
 };
 
@@ -27,6 +29,7 @@ exports.getOneById = async (req, res) => {
     else res.json(tes);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 };
 
@@ -38,6 +41,7 @@ exports.postOne = async (req, res) => {
     res.json({ message: 'OK' });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 };
 
@@ -52,6 +56,7 @@ exports.updateOneById = async (req, res) => {
     } else res.status(404).json({ message: 'Not found...' });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 };
 
@@ -64,5 +69,6 @@ exports.deleteOneById = async (req, res) => {
     } else res.status(404).json({ message: 'Not found...' });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 };

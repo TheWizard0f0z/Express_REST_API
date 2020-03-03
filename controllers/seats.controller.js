@@ -5,6 +5,7 @@ exports.getAll = async (req, res) => {
     res.json(await Seat.find());
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 };
 
@@ -16,7 +17,8 @@ exports.getRandom = async (req, res) => {
     if (!sea) res.status(404).json({ message: 'Not found' });
     else res.json(sea);
   } catch (err) {
-    res.json(err);
+    res.status(500).json(err);
+    console.log(err);
   }
 };
 
@@ -27,6 +29,7 @@ exports.getOneById = async (req, res) => {
     else res.json(sea);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 };
 
@@ -39,10 +42,12 @@ exports.postOne = async (req, res) => {
     } else {
       const newSeat = new Seat({ day: day, seat: seat, client: client, email: email });
       await newSeat.save();
+      req.io.emit('seatsUpdated', await Seat.find());
       res.json({ message: 'OK' });
     }
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 };
 
@@ -57,6 +62,7 @@ exports.updateOneById = async (req, res) => {
     } else res.status(404).json({ message: 'Not found...' });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 };
 
@@ -69,5 +75,6 @@ exports.deleteOneById = async (req, res) => {
     } else res.status(404).json({ message: 'Not found...' });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 };
