@@ -75,3 +75,86 @@ exports.deleteOneById = async (req, res) => {
     console.log(err);
   }
 };
+
+exports.getPerformer = async (req, res) => {
+  try {
+    const allConcerts = await Concert.find();
+
+    if (!allConcerts) res.status(404).json({ message: 'Not found' });
+    else {
+      const performerConcerts = [];
+      for (let singleConcert of allConcerts) {
+        if (singleConcert.performer === req.params.performer) {
+          performerConcerts.push(singleConcert);
+        }
+      }
+      res.json(performerConcerts);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+};
+
+exports.getGenre = async (req, res) => {
+  try {
+    const allConcerts = await Concert.find();
+
+    if (!allConcerts) res.status(404).json({ message: 'Not found' });
+    else {
+      const genreConcerts = [];
+      for (let singleConcert of allConcerts) {
+        if (singleConcert.genre === req.params.genre) {
+          genreConcerts.push(singleConcert);
+        }
+      }
+      res.json(genreConcerts);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+};
+
+exports.getDay = async (req, res) => {
+  try {
+    const allConcerts = await Concert.find();
+
+    if (!allConcerts) res.status(404).json({ message: 'Not found' });
+    else {
+      const dayConcerts = [];
+      for (let singleConcert of allConcerts) {
+        if (singleConcert.day === parseInt(req.params.day)) {
+          dayConcerts.push(singleConcert);
+        }
+      }
+      res.json(dayConcerts);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+};
+
+exports.getPrice = async (req, res) => {
+  try {
+    const allConcerts = await Concert.find();
+
+    if (!allConcerts) res.status(404).json({ message: 'Not found' });
+    else {
+      const priceMin = parseInt(req.params.price_min);
+      const priceMax = parseInt(req.params.price_max);
+
+      const priceConcerts = [];
+      for (let singleConcert of allConcerts) {
+        if (singleConcert.price >= priceMin && singleConcert.price <= priceMax) {
+          priceConcerts.push(singleConcert);
+        }
+      }
+      res.json(priceConcerts);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+};
