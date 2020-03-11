@@ -2,13 +2,13 @@
   "name": "kodilla_express_rest_api",
   "version": "1.0.0",
   "main": "server.js",
-  "repository": "https://github.com/TheWizard0f0z/Express_REST_API.git",
+  "repository": "https://github.com/TheWizard0f0z/Express-NewWaveFestival.git",
   "author": "Marcin Dzieszkowski <m.dzieszkowski@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "nodemon server.js",
     "build": "cd client && yarn install && yarn build",
-    "test": "mocha \"./{,!(node_modules)/**/}*.test.js\"",
+    "test": "mocha test/**/*.test.js",
     "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
   },
   "dependencies": {

@@ -9,7 +9,7 @@ const request = chai.request;
 
 describe('GET /api/concerts', () => {
   it('/should return concerts of selected performer', async () => {
-    const res = await request(server).get('/api/concerts/performer/John');
+    const res = await request(server).get('/api/concerts/performer/John Doe');
     expect(res.status).to.be.equal(200);
     expect(res.body).to.be.an('array');
     expect(res.body.length).to.be.equal(1);
