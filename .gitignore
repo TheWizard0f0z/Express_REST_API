@@ -105,3 +105,6 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+
+# Snyk helps you find, fix and monitor known vulnerabilities in open source
+.snyk
