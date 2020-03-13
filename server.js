@@ -5,7 +5,6 @@ const socket = require('socket.io');
 const mongoose = require('mongoose');
 
 require('dotenv').config();
-console.log(process.env);
 
 const app = express();
 
