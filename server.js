@@ -5,6 +5,7 @@ const socket = require('socket.io');
 const mongoose = require('mongoose');
 
 require('dotenv').config();
+console.log(process.env);
 
 const app = express();
 
@@ -35,7 +36,7 @@ app.use((req, res) => {
 });
 
 // connects our backend code with the database
-const uri = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@cluster0-vul2l.mongodb.net/NewWaveDB`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-vul2l.mongodb.net/NewWaveDB`;
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
